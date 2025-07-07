@@ -36,41 +36,24 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
-import androidx.core.view.OnApplyWindowInsetsListener;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
-import com.snapmint.merchantsdk.BuildConfig;
 import com.snapmint.merchantsdk.JSBridge.CheckoutWebViewInterface;
 import com.snapmint.merchantsdk.R;
-import com.snapmint.merchantsdk.api.CurlLoggerInterceptor;
-import com.snapmint.merchantsdk.constants.ApiConstant;
 import com.snapmint.merchantsdk.constants.SnapmintConfiguration;
 import com.snapmint.merchantsdk.databinding.ActivityNewCheckoutWebviewBinding;
 import com.snapmint.merchantsdk.utils.CheckoutResponse;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class NewCheckoutWebViewActivity extends AppCompatActivity implements CheckoutResponse {
 
