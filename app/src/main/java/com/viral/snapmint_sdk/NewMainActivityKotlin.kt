@@ -35,8 +35,8 @@ class NewMainActivityKotlin : AppCompatActivity() {
     private lateinit var binding: ActivityNewMainKotlinBinding
     private lateinit var mContext: NewMainActivityKotlin
     private var progressBar: ProgressDialog? = null
-    private var titanUrl = "4858/snap_titan.json"
-//    private var titanUrl = "4858/Titan-updated.json"
+//    private var titanUrl = "4858/snap_titan.json"
+    private var titanUrl = "4858/Titan-updated.json"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -225,21 +225,21 @@ class NewMainActivityKotlin : AppCompatActivity() {
             val data = result.data
             val status = data?.getStringExtra(SnapmintConfiguration.STATUS)
             val responseData = data?.getStringExtra(SnapmintConfiguration.DATA)
-            showErrorDialog(responseData)
             if (SnapmintConfiguration.SUCCESS.equals(status, ignoreCase = true)) {
                 Toast.makeText(this, "Payment Success", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show()
             }
+            showErrorDialog(responseData , isError = !SnapmintConfiguration.SUCCESS.equals(status, ignoreCase = true))
         }
     }
 
 
-    private fun showErrorDialog(message: String?) {
+    private fun showErrorDialog(message: String? , isError: Boolean=true) {
         runOnUiThread(Runnable {
             val builder = AlertDialog.Builder(mContext)
             builder.setMessage(message)
-            builder.setTitle("Error !")
+            builder.setTitle(if(isError) SnapmintConfiguration.FAILED else SnapmintConfiguration.SUCCESS)
             builder.setNegativeButton("Ok", DialogInterface.OnClickListener { dialog: DialogInterface?, which: Int ->
                 dialog?.cancel()
             }
